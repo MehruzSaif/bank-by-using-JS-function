@@ -6,12 +6,15 @@
 // const test = doubleIt(5);
 // console.log(test);
 
-function getInputValue() {
-    const depositInput = document.getElementById('deposit-input');
-    const depositAmountText = depositInput.value;
-    const depositAmount = parseFloat(depositAmountText);
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
 
-    return depositAmount;
+    //clear input field
+    inputField.value = '';
+
+    return amountValue;
 }
 
 
@@ -19,7 +22,7 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     // const depositInput = document.getElementById('deposit-input');
     // const depositAmountText = depositInput.value;
     // const depositAmount = parseFloat(depositAmountText);
-    const depositAmount = getInputValue();
+    const depositAmount = getInputValue('deposit-input');
 
     //get current deposit
     const depositTotal = document.getElementById('deposit-total');
@@ -36,16 +39,17 @@ document.getElementById('deposit-button').addEventListener('click', function () 
 
     balanceTotal.innerText = previousBalanceTotal + depositAmount;
 
-    //clear input field
-    depositInput.value = '';
+    // //clear input field
+    // depositInput.value = '';
 });
 
 
 //handle withdraw button
 document.getElementById('withdraw-button').addEventListener('click', function () {
-    const withdrawInput = document.getElementById('withdraw-input');
-    const withdrawAmountText = withdrawInput.value;
-    const withdrawAmount = parseFloat(withdrawAmountText);
+    // const withdrawInput = document.getElementById('withdraw-input');
+    // const withdrawAmountText = withdrawInput.value;
+    // const withdrawAmount = parseFloat(withdrawAmountText);
+    const withdrawAmount = getInputValue('withdraw-input');
 
 
     //update withdraw total
@@ -62,7 +66,7 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
 
     balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
 
-    //clear input field
-    withdrawInput.value = '';
+    // //clear input field
+    // withdrawInput.value = '';
 });
 
